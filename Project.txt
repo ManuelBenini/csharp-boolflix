@@ -1,0 +1,61 @@
+﻿#entità (entity framework, database, model)
+
+- profili: l'utente che sfoglia il catalogo e riproduce i *contenuti multimediali*
+- account: Contiene le informaziooni di pagamento e il numero di *profili* identificati
+- Contenuto Multimediale (Media in inglese): 
+	- Anno
+	- Novità (true|false)
+	- Qualità video
+	- PEGI: (16+)
+	- Tipologia: 
+		- Serie TV:
+				- Numero di episodi : Lista *Contenuti multimediali*
+				- Stagioni:
+					- Episodio:
+						- Numero di stagione a cui appartiene
+		- Film
+	- Cast: Lista di attori
+	- Generi: Lista di parole che identificano un genere
+	- Caratteristiche, lista di parole che spericifano una caratteristica del contenuto
+
+
+
+#interazioni (controller, navigazioni, link, interfaccia utente UI)
+
+
+
+#Elementi grafici (Layout, views, Partial, Interfaccia grafica)
+
+##Layout Home
+- Header:
+	- Logo
+	- Menu sinistra: Home, serie Tv, Nuovi e popolari, La mia lista, sfoglia per lingua
+	- Menu destra: Ricerca, sezione bambini, notifiche, profilo
+
+- Content (RenderBody)
+	- Visore centrale con *contenuti multimediali* in evidenza
+	- Lista di contenuti (*Playlist*) divise per categoria
+
+- Footer:
+	- Riga social
+	- riga 4 colonne(liste)
+	- riga codice servizio
+	- riga copyright
+
+
+##Layout Serie TV e Film : Layout home (È uguale a Layout Home)
+	- Con aggiunta di box con filtro del genere.
+
+##Layout Nuovi e popolari : Layout home (È uguale a Layout Home)
+	- Senza convenuto in evidenza (Nel content, visore centrale)
+
+
+
+##Component o partial
+
+- Contenuto Multimediale (Media in inglese): 
+	- Serie TV
+		- ?Se? il numero di stagioni è 1 allora visualizza il numero degli episodi, ?altrimenti? delle stagioni.
+
+	- Film
+		- Visualizzo la durata del film
