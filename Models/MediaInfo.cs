@@ -14,7 +14,7 @@
     public int? TvSeriesId { get; set; }
     public TvSerie? TvSeries { get; set; }
 
-    public List<Actor> Cast { get; set; }
-    public List<Genre> Genres { get; set; }
-    public List<Feature> Features { get; set; }
+    public List<Actor> Cast { get; set; } = new();
+    public List<Genre> Genres { get; set; } = new();
+    public List<Feature> Features { get; set; } = new();
 }

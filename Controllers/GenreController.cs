@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace csharp_boolflix.Controllers
 {
-    public class FeatureController : Controller
+    public class GenreController : Controller
     {
         BoolflixDbContext db;
-        public FeatureController()
+        public GenreController()
         {
             db = new();
         }
@@ -18,7 +18,7 @@ namespace csharp_boolflix.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Store(Feature model)
+        public IActionResult Store(Genre model)
         {
             if (!ModelState.IsValid)
             {
@@ -28,28 +28,28 @@ namespace csharp_boolflix.Controllers
             db.Add(model);
             db.SaveChanges();
 
-            return RedirectToAction("Features", "Editor");
+            return RedirectToAction("Genres", "Editor");
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Feature feature = db.Features.Find(id);
+            Genre genre = db.Genres.Find(id);
 
-            if (feature == null)
+            if (genre == null)
             {
-                return NotFound("Non è stato possibile trovare la caratteristica da modificare");
+                return NotFound("Non è stato possibile trovare il genere da modificare");
             }
             else
             {
-                return View(feature);
+                return View(genre);
             }
 
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(int id, Feature model)
+        public IActionResult Update(int id, Genre model)
         {
 
             if (!ModelState.IsValid)
@@ -57,31 +57,31 @@ namespace csharp_boolflix.Controllers
                 return View("Edit", model);
             }
 
-            Feature feature = db.Features.Find(id);
+            Genre genre = db.Genres.Find(id);
 
-            feature.Name = model.Name;
+            genre.Name = model.Name;
 
             db.SaveChanges();
 
-            return RedirectToAction("Features", "Editor");
+            return RedirectToAction("Genres", "Editor");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-            Feature feature = db.Features.Find(id);
+            Genre genre = db.Genres.Find(id);
 
-            if (feature == null)
+            if (genre == null)
             {
                 return NotFound();
             }
             else
             {
-                db.Features.Remove(feature);
+                db.Genres.Remove(genre);
                 db.SaveChanges();
 
-                return RedirectToAction("Features", "Editor");
+                return RedirectToAction("Genres", "Editor");
             }
 
         }

@@ -1,12 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "Crea caratteristica";
+    ViewData["Title"] = "Modifica caratteristica";
 
     Layout = "_EditorLayout";
 }
 
 @model Feature
 
-<form asp-controller="Feature" asp-action="Store" method="post">
+<form asp-controller="Feature" asp-action="Update" asp-route-id="@Model.Id" method="post">
     @Html.AntiForgeryToken()
     <div class="form-group">
         <label>Nome caratteristica:</label>

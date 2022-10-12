@@ -9,11 +9,6 @@ namespace csharp_boolflix.Controllers
         public EditorController()
         {
             db = new();
-
-            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
-            customCulture.NumberFormat.NumberDecimalSeparator = ".";
-
-            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
         }
         public IActionResult Index()
         {
@@ -21,19 +16,19 @@ namespace csharp_boolflix.Controllers
         }
         public IActionResult Films()
         {
-            return View();
+            return View(db.Films.ToList());
         }
         public IActionResult TvSeries()
         {
-            return View();
+            return View(db.TvSeries.ToList());
         }
         public IActionResult Actors()
         {
-            return View();
+            return View(db.Actors.ToList());
         }
         public IActionResult Genres()
         {
-            return View();
+            return View(db.Genres.ToList());
         }
         public IActionResult Features()
         {

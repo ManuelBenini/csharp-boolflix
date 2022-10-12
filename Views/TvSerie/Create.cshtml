@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Crea serie TV";
+
+    Layout = "_EditorLayout";
+}
+
+@model SupportClass
+
+<form asp-controller="TvSerie" asp-action="Store" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label>Nome TvSerie:</label>
+        <input type="text" asp-for="TvSerie.Title" class="form-control" placeholder="Inserisci nome">
+        <span asp-validation-for="TvSerie.Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Numero di stagioni</label>
+        <input type="number" asp-for="TvSerie.SeasonsCount" class="form-control" placeholder="Inserisci numero di stagioni">
+        <span asp-validation-for="TvSerie.Duration" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Descrizione TvSerie:</label>
+        <input type="text" asp-for="TvSerie.Description" class="form-control" placeholder="Inserisci descrizione">
+        <span asp-validation-for="TvSerie.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Anno di uscita:</label>
+        <input type="number" asp-for="TvSerie.MediaInfo.Year" class="form-control" placeholder="Inserisci anno di uscita">
+        <span asp-validation-for="TvSerie.MediaInfo.Year" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Novità:</label>
+        <input asp-for="TvSerie.MediaInfo.IsNew" />
+        <span asp-validation-for="TvSerie.MediaInfo.IsNew" class="text-danger"></span>
+    </div>
+    <select asp-for="SelectedActors"
+            size="10"
+            class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+            asp-items="@(new SelectList(Model.Actors, nameof(Actor.Id), nameof(Actor.Fullname)))">
+    </select>
+    <select asp-for="SelectedGenres"
+            size="10"
+            class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+            asp-items="@(new SelectList(Model.Genres, nameof(Genre.Id), nameof(Genre.Name)))">
+    </select>
+    <select asp-for="SelectedFeatures"
+            size="10"
+            class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+            asp-items="@(new SelectList(Model.Features, nameof(Feature.Id), nameof(Feature.Name)))">
+    </select>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

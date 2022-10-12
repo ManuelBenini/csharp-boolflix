@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Crea film";
+
+    Layout = "_EditorLayout";
+}
+
+@model SupportClass
+
+<form asp-controller="Film" asp-action="Update" asp-route-id="@Model.Film.Id" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label>Nome film:</label>
+        <input type="text" asp-for="Film.Title" class="form-control" placeholder="Inserisci nome">
+        <span asp-validation-for="Film.Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Durata film in minuti:</label>
+        <input type="number" asp-for="Film.Duration" class="form-control" placeholder="Inserisci durata">
+        <span asp-validation-for="Film.Duration" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Descrizione film:</label>
+        <input type="text" asp-for="Film.Description" class="form-control" placeholder="Inserisci descrizione">
+        <span asp-validation-for="Film.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Anno di uscita:</label>
+        <input type="number" asp-for="Film.MediaInfo.Year" class="form-control" placeholder="Inserisci anno di uscita">
+        <span asp-validation-for="Film.MediaInfo.Year" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Novità:</label>
+        <input asp-for="Film.MediaInfo.IsNew" />
+        <span asp-validation-for="Film.MediaInfo.IsNew" class="text-danger"></span>
+    </div>
+    <select asp-for="SelectedActors"
+            size="10"
+            class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+            asp-items="@(new SelectList(Model.Actors, nameof(Actor.Id), nameof(Actor.Fullname)))">
+    </select>
+    <select asp-for="SelectedGenres"
+            size="10"
+            class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+            asp-items="@(new SelectList(Model.Genres, nameof(Genre.Id), nameof(Genre.Name)))">
+    </select>
+    <select asp-for="SelectedFeatures"
+            size="10"
+            class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+            asp-items="@(new SelectList(Model.Features, nameof(Feature.Id), nameof(Feature.Name)))">
+    </select>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

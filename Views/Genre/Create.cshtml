@@ -1,15 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Crea caratteristica";
+    ViewData["Title"] = "Crea genere";
 
     Layout = "_EditorLayout";
 }
 
-@model Feature
+@model Genre
 
-<form asp-controller="Feature" asp-action="Store" method="post">
+<form asp-controller="Genre" asp-action="Store" method="post">
     @Html.AntiForgeryToken()
     <div class="form-group">
-        <label>Nome caratteristica:</label>
+        <label>Nome genere:</label>
         <input type="text" asp-for="Name" class="form-control" placeholder="Inserisci nome">
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>

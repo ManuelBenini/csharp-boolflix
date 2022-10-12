@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Crea attore";
+
+    Layout = "_EditorLayout";
+}
+
+@model Actor
+
+<form asp-controller="Actor" asp-action="Store" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label>Nome attore:</label>
+        <input type="text" asp-for="Name" class="form-control" placeholder="Inserisci nome">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Cognome attore:</label>
+        <input type="text" asp-for="Surname" class="form-control" placeholder="Inserisci cognome">
+        <span asp-validation-for="Surname" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

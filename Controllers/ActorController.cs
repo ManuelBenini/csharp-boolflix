@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace csharp_boolflix.Controllers
 {
-    public class FeatureController : Controller
+    public class ActorController : Controller
     {
         BoolflixDbContext db;
-        public FeatureController()
+        public ActorController()
         {
             db = new();
         }
@@ -18,7 +18,7 @@ namespace csharp_boolflix.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Store(Feature model)
+        public IActionResult Store(Actor model)
         {
             if (!ModelState.IsValid)
             {
@@ -28,28 +28,28 @@ namespace csharp_boolflix.Controllers
             db.Add(model);
             db.SaveChanges();
 
-            return RedirectToAction("Features", "Editor");
+            return RedirectToAction("Actors", "Editor");
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Feature feature = db.Features.Find(id);
+            Actor actor = db.Actors.Find(id);
 
-            if (feature == null)
+            if (actor == null)
             {
-                return NotFound("Non è stato possibile trovare la caratteristica da modificare");
+                return NotFound("Non è stato possibile trovare l'attore da modificare");
             }
             else
             {
-                return View(feature);
+                return View(actor);
             }
 
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(int id, Feature model)
+        public IActionResult Update(int id, Actor model)
         {
 
             if (!ModelState.IsValid)
@@ -57,31 +57,32 @@ namespace csharp_boolflix.Controllers
                 return View("Edit", model);
             }
 
-            Feature feature = db.Features.Find(id);
+            Actor actor = db.Actors.Find(id);
 
-            feature.Name = model.Name;
+            actor.Name = model.Name;
+            actor.Surname = model.Surname;
 
             db.SaveChanges();
 
-            return RedirectToAction("Features", "Editor");
+            return RedirectToAction("Actors", "Editor");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-            Feature feature = db.Features.Find(id);
+            Actor actor = db.Actors.Find(id);
 
-            if (feature == null)
+            if (actor == null)
             {
                 return NotFound();
             }
             else
             {
-                db.Features.Remove(feature);
+                db.Actors.Remove(actor);
                 db.SaveChanges();
 
-                return RedirectToAction("Features", "Editor");
+                return RedirectToAction("Actors", "Editor");
             }
 
         }
