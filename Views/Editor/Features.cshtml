@@ -1,0 +1,49 @@
+﻿    @model List<Feature>;
+
+@{
+    ViewData["Title"] = "Caratteristiche";
+
+    Layout = "_EditorLayout";
+}
+
+    <h1>Caratteristiche</h1>
+    <h2>Lista</h2>
+
+    <hr />
+
+    <form>
+
+    </form>
+
+    @if(Model.Count == 0){
+        <div class="alert alert-primary" role="alert">
+            Non sono presenti caratteristiche.
+        </div>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Feature feature in Model)
+                {
+                    <tr>
+                        <th scope="row">@feature.Id</th>
+                        <td>@feature.Name</td>
+                        <td>
+                            <a href="javascript:alert('da implementare')">Modifica</a>
+                            <a href="javascript:alert('da implementare')">Elimina</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+

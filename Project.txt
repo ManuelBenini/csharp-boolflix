@@ -1,9 +1,17 @@
 ﻿#entità (entity framework, database, model)
 
-- profili: l'utente che sfoglia il catalogo e riproduce i *contenuti multimediali*
-- account: Contiene le informaziooni di pagamento e il numero di *profili* identificati
+- Utente:
+	- account: Contiene le informaziooni di pagamento e il numero di *profili* identificati
+		- profili: l'utente che sfoglia il catalogo e riproduce i *contenuti multimediali*
+			- Lista di contenuti preferiti
+	- Editor:
+
+
+
 - Contenuto Multimediale (Media in inglese): 
+	- Titolo
 	- Anno
+	- Descrizione
 	- Novità (true|false)
 	- Qualità video
 	- PEGI: (16+)
@@ -17,11 +25,18 @@
 	- Cast: Lista di attori
 	- Generi: Lista di parole che identificano un genere
 	- Caratteristiche, lista di parole che spericifano una caratteristica del contenuto
+- Valutazione dei contenuti:
+	- Non fa per me:
+	- Mi piace:
+	- Adoro!
+- Compatibilità con l'utente rispetto al contenuto
 
 
 
 #interazioni (controller, navigazioni, link, interfaccia utente UI)
 
+	- EditorController
+	- AccountController | UserController | ProfileController
 
 
 #Elementi grafici (Layout, views, Partial, Interfaccia grafica)
@@ -54,8 +69,16 @@
 ##Component o partial
 
 - Contenuto Multimediale (Media in inglese): 
-	- Serie TV
-		- ?Se? il numero di stagioni è 1 allora visualizza il numero degli episodi, ?altrimenti? delle stagioni.
+	- Immagine di copertina
+	- Titolo
+	- Label dinamico: "Novità" quando è un contenuto recente, altrimenti "Compatibilità xx%".
+	- Anno
+	- PEGI
+	- Audio (on|off)
+	- Pulsante di riproduzione
+	- Label dinamico:
+		- Serie TV
+			- ?Se? il numero di stagioni è 1 allora visualizza il numero degli episodi, ?altrimenti? delle stagioni.
 
-	- Film
-		- Visualizzo la durata del film
+		- Film
+			- Visualizzo la durata del film
