@@ -3,8 +3,7 @@
 public class Episode : MediaContent
 {
     public int SeasonNumber { get; set; }
-    public string Name { get; set; }
 
     public int TvSeriesId { get; set; }
-    public TvSerie TvSeries { get; set; }
+    public TvSerie? TvSeries { get; set; }
 }

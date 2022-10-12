@@ -12,8 +12,8 @@ using csharp_boolflix.Context;
 namespace csharp_boolflix.Migrations
 {
     [DbContext(typeof(BoolflixDbContext))]
-    [Migration("20221012103856_nullableMediaInfoRelation")]
-    partial class nullableMediaInfoRelation
+    [Migration("20221012150805_NullableDuration")]
+    partial class NullableDuration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -72,7 +72,7 @@ namespace csharp_boolflix.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Duration")
+                    b.Property<int?>("Duration")
                         .HasColumnType("int");
 
                     b.Property<int>("SeasonNumber")
@@ -139,7 +139,7 @@ namespace csharp_boolflix.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Duration")
+                    b.Property<int?>("Duration")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -232,7 +232,7 @@ namespace csharp_boolflix.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Duration")
+                    b.Property<int?>("Duration")
                         .HasColumnType("int");
 
                     b.Property<int>("SeasonsCount")

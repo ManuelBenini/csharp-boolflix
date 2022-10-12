@@ -6,7 +6,7 @@
     Layout = "_EditorLayout";
 }
 
-<a asp-action="Create" asp-controller="TvSerie">Crea nuova</a>
+<a asp-action="Create" asp-controller="TvSerie">Crea nuova serie Tv</a>
 <h2>Lista Serie TV</h2>
 
 <hr />
@@ -43,6 +43,7 @@ else
                             @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-danger">Elimina</button>
                         </form>
+                        <a href="@Url.Action("Create", "Episode", new {id = tvSerie.Id})" class="btn btn-dark">Aggiungi episodio</a>
                     </td>
                 </tr>
             }

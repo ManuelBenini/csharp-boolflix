@@ -6,5 +6,5 @@ public class TvSerie : MediaContent
 
 
     public MediaInfo MediaInfo { get; set; }
-    public List<Episode> Episodes { get; set; }
+    public List<Episode> Episodes { get; set; } = new();
 }

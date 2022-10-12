@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Crea episodio";
+
+    Layout = "_EditorLayout";
+}
+
+@model SupportClass
+
+<h1>Stai aggiungendo un ep. per: @Model.TvSerie.Title</h1>
+
+<form asp-controller="Episode" asp-action="Store" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label>Nome episodio:</label>
+        <input type="text" asp-for="Episode.Title" class="form-control" placeholder="Inserisci nome">
+        <span asp-validation-for="Episode.Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Durata episodio:</label>
+        <input type="number" asp-for="Episode.Duration" class="form-control" placeholder="Inserisci durata">
+        <span asp-validation-for="Episode.Duration" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Descrizione episodio:</label>
+        <input type="text" asp-for="Episode.Description" class="form-control" placeholder="Inserisci descrizione">
+        <span asp-validation-for="Episode.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Inserire stagione di appartenenza</label>
+        <input type="number" asp-for="Episode.SeasonNumber" class="form-control" placeholder="Inserisci stagione dell'episodio">
+        <span asp-validation-for="Episode.SeasonNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group visually-hidden">
+        <input asp-for="tvSerieId" class="form-control" placeholder="Inserisci stagione dell'episodio">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
